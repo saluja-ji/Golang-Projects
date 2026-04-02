@@ -76,6 +76,4 @@ This project was created as a learning exercise to understand REST API developme
 
 Feel free to fork and contribute! Open issues or submit pull requests for improvements.
 
-## License
 
-This project is open source and available under the [MIT License](LICENSE).
