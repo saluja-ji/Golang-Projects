@@ -13,9 +13,6 @@ This repository is a personal code collection and sandbox for multiple projects,
 
 Each project lives in its own folder or top-level artifact, with a dedicated README and clear instructions:
 
-- `go-movies-crud` (current project): simple CRUD API for movies in Go.
-- `project-name-2`: another project sample (replace as needed).
-- `project-name-n`: additional project directories.
 
 ## How to Use
 
