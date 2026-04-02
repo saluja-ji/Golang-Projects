@@ -65,8 +65,8 @@ The server will start on port 8000. You can access the API at `http://localhost:
 ## Sample Data
 
 The application starts with two sample movies:
-- "Pushpit the great" by John Doe
-- "The great economist Pushpit" by George Soros
+- "The great" by John Doe
+- "The great economist" by George Soros
 
 ## Personal Notes
 
