@@ -1,3 +1,6 @@
+<img width="246" height="140" alt="image" src="https://github.com/user-attachments/assets/8309af9a-d7db-48b8-9edd-050cb4edd4cf" />
+
+
 # Go Movies CRUD
 
 A simple REST API for managing a collection of movies, built with Go and the Gorilla Mux router. This project demonstrates basic CRUD operations (Create, Read, Update, Delete) for movie data stored in memory.
