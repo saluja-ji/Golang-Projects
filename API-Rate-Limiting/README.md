@@ -40,8 +40,7 @@ By studying this code, you'll learn:
 
 3. **Set up PostgreSQL database:**
    - Create a database named `mydb`
-   - Update the database connection string in `main.go` if needed (currently configured for localhost with user `psssh`, password `p1223.`)
-
+   - Update the database connection string in `main.go` 
 4. **Run the server:**
    ```bash
    go run main.go
