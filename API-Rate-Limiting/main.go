@@ -30,7 +30,7 @@ type RateLimit struct {
 }
 
 func initDG() *gorm.DB {
-	dsn := "host=localhost user=psssh password=p1223. dbname=mydb port=5432 sslmode=disable TimeZone=Asia/Kolkata"
+	dsn := "host=localhost user=xxxx password=xxx. dbname=xxxx port=5432 sslmode=disable TimeZone=Asia/Kolkata"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal("failed to connect database")
