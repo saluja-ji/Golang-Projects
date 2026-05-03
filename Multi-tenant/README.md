@@ -78,7 +78,7 @@ These custom claims are embedded inside every signed token.
 2. Update the DSN in `main.go` if needed:
 
 ```
-host=localhost user=psssh password=p1223. dbname=mydb port=5432 sslmode=disable
+host=localhost user=xxxx password=xxx. dbname=xxx port=5432 sslmode=disable
 ```
 
 3. Run the program:
