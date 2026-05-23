@@ -1,12 +1,18 @@
 # CodeClock CLI
 
-Simple command-line tool to time coding tasks and save session records to `codeclock.json`.
+Lightweight command-line app that times a coding task and persists session records to `codeclock.json`.
 
-How it works
-- Run the CLI, enter a task name, press Enter to start, then press Enter again to stop.
-- Each session is saved as a JSON object with `task`, `date` (YYYY-MM-DD), and `duration`.
+What you will learn
+- How to read user input from the terminal using `bufio.NewReader` and `ReadString`.
+- How to work with time in Go: `time.Now()`, `time.Since()`, and `Round` for human-friendly durations.
+- How to define structs with JSON tags and marshal/unmarshal JSON (`encoding/json`).
+- Basic file I/O with `os.ReadFile` and `os.WriteFile` and simple error handling.
 
-Build & Run
+Quick overview
+- Run the CLI, type a task name and press Enter to start the timer.
+- Press Enter again to stop; the program prints the duration and appends a session to `codeclock.json`.
+
+Build & run
 ```bash
 cd CodeClockCLI
 go run main.go
@@ -15,10 +21,7 @@ go build -o codeclock .
 ./codeclock
 ```
 
-Data file
-- Sessions are stored in `codeclock.json` in the same directory. Keep this file in version control at your discretion.
-
-Example
+Example run
 ```
 What task are you starting? : Write unit tests
 
@@ -28,6 +31,25 @@ Clocked OUT! Time Spent: 1m30s
 Session saved to codeclock.json!
 ```
 
-Notes for learners
-- The code shows basic use of `bufio`, `time`, and JSON marshalling in Go.
-- `Session` uses struct tags to control JSON key names.
+File format
+- Each entry in `codeclock.json` is an object with `task`, `date` (YYYY-MM-DD), and `duration` (string).
+
+Walkthrough (learner-friendly)
+- `Session` struct: shows how to annotate fields with JSON tags so keys match expected names.
+- Input: `bufio.NewReader(os.Stdin)` and `ReadString('\n')` capture typed task names.
+- Timing: `start := time.Now()` and `elapsed := time.Since(start).Round(time.Second)` produce neat durations.
+- Persistence: existing data is read with `os.ReadFile`, parsed with `json.Unmarshal`, appended, and written back with `json.MarshalIndent` + `os.WriteFile`.
+
+Suggested exercises
+- Add a flag to show the last N sessions (use `flag` package).
+- Save sessions in CSV instead of JSON to practice different encodings.
+- Add a start/stop command mode so you can run `codeclock start` and `codeclock stop` separately.
+- Add validation to prevent empty task names and handle corrupted `codeclock.json` gracefully.
+
+Debugging tips
+- If runs fail, print errors and inspect `codeclock.json` for valid JSON.
+- Use `fmt.Printf("%#v\n", variable)` to inspect Go values during development.
+
+Further reading
+- Go by Example: IO and JSON examples (gobyexample.com)
+- The `time` package docs: https://pkg.go.dev/time
