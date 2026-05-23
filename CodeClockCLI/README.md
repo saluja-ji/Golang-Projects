@@ -1,40 +1,33 @@
+# CodeClock CLI
 
-# CodeClock CLI — Learner Guide
+Simple command-line tool to time coding tasks and save session records to `codeclock.json`.
 
-Small CLI that times a single coding task and appends the session to `codeclock.json`.
+How it works
+- Run the CLI, enter a task name, press Enter to start, then press Enter again to stop.
+- Each session is saved as a JSON object with `task`, `date` (YYYY-MM-DD), and `duration`.
 
-**Why this is good for learners**
-- **Hands-on**: Shows practical use of `bufio`, `time`, and `encoding/json`.
-- **Small surface area**: Easy to read and modify a few functions.
-
-**Files**
-- **Source**: [CodeClockCLI/main.go](CodeClockCLI/main.go) — the program entry and core logic.
-- **Data**: `codeclock.json` — where sessions are stored after each run.
-- **Guide**: [CodeClockCLI/README.md](CodeClockCLI/README.md) — this learner-focused walkthrough.
-
-**Quick Start**
+Build & Run
 ```bash
 cd CodeClockCLI
 go run main.go
+# or build a binary
+go build -o codeclock .
+./codeclock
 ```
 
-**What to watch for (quick walkthrough)**
-- **`main()`**: Prompts for a task, records `startTime`, waits for Enter, then computes duration.
-- **Reading input**: Uses `bufio.NewReader(os.Stdin)` and `ReadString('\n')` to capture the task name.
-- **Timing**: `time.Now()` marks the start; `time.Since(startTime)` gives the elapsed time.
-- **Rounding**: `duration.Round(time.Second)` simplifies the display to whole seconds.
-- **Persistence**: `saveSession()` reads `codeclock.json` (if present), appends the new `Session`, and writes indented JSON with `json.MarshalIndent`.
+Data file
+- Sessions are stored in `codeclock.json` in the same directory. Keep this file in version control at your discretion.
 
-**Key concepts (1–2 lines each)**n+- **Struct tags**: `Session` uses ``json:"task"`` to map Go fields to JSON keys when marshalling.
-- **Error handling**: The program prints errors and exits early when critical IO fails — a common Go pattern.
-- **File IO**: `os.ReadFile`/`os.WriteFile` make file operations concise for small files.
+Example
+```
+What task are you starting? : Write unit tests
 
-**Exercises for learners**
-- **Add validation**: Prevent empty task names before starting the timer.
-- **CSV export**: Write a small command to export `codeclock.json` to CSV.
-- **Duration format**: Show duration in `mm:ss` instead of the default `1m30s` string.
+Clocked IN at 14:05:23
+Press [ENTER] when you are finished...
+Clocked OUT! Time Spent: 1m30s
+Session saved to codeclock.json!
+```
 
-**Next steps**
-- Try the exercises above and open [CodeClockCLI/main.go](CodeClockCLI/main.go) while you edit.
-- Want me to implement one of the exercises now? Tell me which one.
-
+Notes for learners
+- The code shows basic use of `bufio`, `time`, and JSON marshalling in Go.
+- `Session` uses struct tags to control JSON key names.
